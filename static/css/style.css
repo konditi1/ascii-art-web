@@ -1,0 +1,95 @@
+
+.hidden {
+    display: none;
+} 
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1px;
+    background-color: #41606671;
+    color: #fff;
+}
+
+header nav {
+    display: flex;
+    align-items: center;
+    max-width: 1200px;
+    margin-left: 0 auto;
+    padding: 0 1rem;
+}
+
+header nav ul {
+    list-style: none;
+    display: flex;
+    gap: 1rem;
+}
+
+header nav ul li a {
+    color: #080101;
+    text-decoration: none;
+}
+
+h1 {
+    text-align: center;
+}
+
+html, body {
+    height: 100%;
+    margin: 0;
+    /* padding: 0; */
+    display: flex;
+    flex-direction: column;
+}
+
+
+
+main {
+    flex: 1;
+}
+
+main h1 {
+    padding: 2rem 1rem;
+    /* max-width: 1200px; */
+    margin: 0 auto;
+}
+
+
+.ascii-form {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+}
+
+.left-group, .right-group {
+    flex: 1;
+}
+
+.left-group label, .right-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+}
+
+.left-group select, .right-group textarea {
+    width: 100%;
+    padding: 0.5rem;
+    margin-bottom: 1rem;
+    border: 1px solid #ccc;
+}
+
+#colorChoices {
+    margin-top: 1rem;
+}
+
+#colorChoices div {
+    margin-bottom: 0.5rem;
+}
+
+
+footer {
+    background: #41606671;
+    color: #080101;
+    text-align: center;
+    padding: 0.1rem 1rem;
+}
