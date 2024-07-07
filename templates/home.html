@@ -10,7 +10,7 @@
     <header>
         <nav>
             <ul>
-                <li><a href="#">Ascii-Web</a></li>
+                <li><a href="home">Ascii-Web</a></li>
                 <li><a href="about">About</a></li>
             </ul>
         </nav>
@@ -18,7 +18,7 @@
     <main>
         <h1>Ascii-Web</h1>
 
-        <form action="/home" method="POST" class="ascii-form">
+        <form action="/" method="POST" class="ascii-form">
             <div class="left-group">
                 <label for="file">Banner file</label>
                 <select name="file" id="style">
@@ -26,7 +26,7 @@
                     <option value="shadow">Shadow</option>
                     <option value="thinkertoy">Thinkertoy</option>
                 </select>
-
+                <br><br>
                 <label for="selectColor">Color The Art</label>
                 <div>
                     <input type="radio" id="yes" name="selectColor" value="yes" onclick="toggleColors(true)">
@@ -38,38 +38,30 @@
                 </div>
                 
                 <div id="colorChoices" class="hidden">
-                    <div>
-                        <input type="radio" id="red" name="color" value="red">
-                        <label for="red">Red</label>
-                    </div>
-                    <div>
-                        <input type="radio" id="green" name="color" value="green">
-                        <label for="green">Green</label>
-                    </div>
-                    <div>
-                        <input type="radio" id="blue" name="color" value="blue">
-                        <label for="blue">Blue</label>
-                    </div>
-                    <div>
-                        <input type="radio" id="yellow" name="color" value="yellow">
-                        <label for="yellow">Yellow</label>
-                    </div>
-                    <div>
-                        <input type="radio" id="cyan" name="color" value="cyan">
-                        <label for="cyan">Cyan</label>
-                    </div>
-                    <div>
-                        <input type="radio" id="magenta" name="color" value="magenta">
-                        <label for="magenta">Magenta</label>
-                    </div>
+                    <label for="color">Select a color:</label>
+                    <select name="color" id="color">
+                        <option value="red">Red</option>
+                        <option value="green">Green</option>
+                        <option value="blue">Blue</option>
+                        <option value="yellow">Yellow</option>
+                        <option value="cyan">Cyan</option>
+                        <option value="magenta">Magenta</option>
+                    </select>
                 </div>
             </div>
             
             <div class="right-group">
-                <textarea name="text" id="text" cols="30" rows="10" required></textarea>
-                <input type="submit" value="Print">
+                <textarea name="text" id="text" placeholder="Enter the text to Print in ASCII art" cols="30" rows="10" required></textarea>
+                <input type="submit" value="Generate">
             </div>
         </form>
+
+        {{if .AsciiArt}}
+        <div class="ascii-art">
+            <pre>{{.AsciiArt}}</pre>
+        </div>
+        {{end}}
+        
     </main>
     <footer>
         <p>&copy; 2024 Ascii-Web. All rights reserved. <a href="https://github.com/konditi1/ascii-art-web">@konditi1</a>

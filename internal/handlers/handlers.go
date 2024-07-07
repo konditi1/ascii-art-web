@@ -8,20 +8,34 @@ import (
 var tmpl = template.Must(template.ParseGlob("../templates/*.html"))
 
 func HomeHandler(w http.ResponseWriter, r *http.Request) {
-	// r.ParseForm()
-	// parsedArgs := r.FormValue("text")
+	if r.Method == http.MethodPost {
+		r.ParseForm()
 
-	tmpl.ExecuteTemplate(w, "home.html", nil)
+		argsPassed := r.FormValue("text")
+		bannerFile := r.FormValue("file")
+		colorSelect := r.FormValue("selectColor")
+
+		var colorChoice string
+
+		if colorSelect == "yes" {
+			colorChoice = r.FormValue("color")
+		} else if colorSelect == "no" {
+			colorChoice = ""
+		}
+
+		data := map[string]interface{}{
+			"argsPassed":  argsPassed,
+			"bannerFile":  bannerFile,
+			"colorChoice": colorChoice,
+		}
+
+		tmpl.ExecuteTemplate(w, "home.html", data)
+	} else {
+		tmpl.ExecuteTemplate(w, "home.html", nil)
+	}
+
 }
 
 func AboutHandler(w http.ResponseWriter, r *http.Request) {
 	tmpl.ExecuteTemplate(w, "about.html", nil)
-}
-func PostHandler(w http.ResponseWriter, r *http.Request) {
-	r.ParseForm()
-
-	userInput := r.FormValue("text")
-
-
-	w.Write([]byte(userInput))
 }

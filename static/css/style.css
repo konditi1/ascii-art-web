@@ -61,10 +61,10 @@ main h1 {
     justify-content: center;
     gap: 1rem;
 }
-
-.left-group, .right-group {
+/* 
+.left-group, .right-group { 
     flex: 1;
-}
+} 
 
 .left-group label, .right-group label {
     display: block;
@@ -73,10 +73,10 @@ main h1 {
 
 .left-group select, .right-group textarea {
     width: 100%;
-    padding: 0.5rem;
+    padding: 0.5;
     margin-bottom: 1rem;
     border: 1px solid #ccc;
-}
+} */
 
 #colorChoices {
     margin-top: 1rem;
