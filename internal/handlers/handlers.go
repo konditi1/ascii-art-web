@@ -3,13 +3,19 @@ package handlers
 import (
 	"html/template"
 	"net/http"
+
+	GenerateASCII "github.com/konditi1/ascii-art-web/resourses/asciiOutput"
 )
 
 var tmpl = template.Must(template.ParseGlob("../templates/*.html"))
 
 func HomeHandler(w http.ResponseWriter, r *http.Request) {
 	if r.Method == http.MethodPost {
-		r.ParseForm()
+		err := r.ParseForm()
+		if err != nil {
+			http.Error(w, "Unable to parse form", http.StatusBadRequest)
+			return
+		}
 
 		argsPassed := r.FormValue("text")
 		bannerFile := r.FormValue("file")
@@ -23,7 +29,13 @@ func HomeHandler(w http.ResponseWriter, r *http.Request) {
 			colorChoice = ""
 		}
 
+		asciiArt, err := GenerateASCII.GenerateASCII(colorChoice, argsPassed, bannerFile)
+		if err != nil {
+			http.Error(w, "Error generating ASCII art", http.StatusInternalServerError)
+		}
+
 		data := map[string]interface{}{
+			"AsciiArt":    asciiArt,
 			"argsPassed":  argsPassed,
 			"bannerFile":  bannerFile,
 			"colorChoice": colorChoice,

@@ -12,7 +12,6 @@ import (
 // and colordoe filed in the reciver stuct (a string representing the color to be applied).
 func Ascii(s Receiver) string {
 	var count int
-	reset := "\033[0m"
 	var outputBuilder strings.Builder
 
 	for _, val := range s.WordsArr {
@@ -20,13 +19,8 @@ func Ascii(s Receiver) string {
 			for i := 1; i <= 8; i++ {
 				for _, v := range val {
 					start := (v - 32) * 9
-					if len(s.LettersToColor) == 0 && s.ColorCode != "" {
-						outputBuilder.WriteString(s.ColorCode + s.FileArr[int(start)+i] + reset)
-					} else if strings.Contains(s.LettersToColor, string(v)) {
-						outputBuilder.WriteString(s.ColorCode + s.FileArr[int(start)+i] + reset)
-					} else {
-						outputBuilder.WriteString(s.FileArr[int(start)+i])
-					}
+					
+					outputBuilder.WriteString(s.FileArr[int(start)+i])
 				}
 				outputBuilder.WriteString("\n")
 			}

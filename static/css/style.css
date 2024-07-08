@@ -86,6 +86,17 @@ main h1 {
     margin-bottom: 0.5rem;
 }
 
+.ascii-art {
+    overflow: auto;
+}
+
+.ascii-art .red { color: red; }
+.ascii-art .green { color: green; }
+.ascii-art .blue { color: blue; }
+.ascii-art .yellow { color: yellow; }
+.ascii-art .cyan { color: cyan; }
+.ascii-art .magenta { color: magenta; }
+
 
 footer {
     background: #10424d71;

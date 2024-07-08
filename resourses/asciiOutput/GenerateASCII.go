@@ -6,7 +6,7 @@ import (
 	"github.com/konditi1/ascii-art-web/resourses/asciiOutput/ascii"
 )
 
-func GenerateASCII(color, text, filename string) {
+func GenerateASCII(color, text, filename string) (string, error) {
 
 	var receive ascii.Receiver
 
@@ -17,8 +17,7 @@ func GenerateASCII(color, text, filename string) {
 	// Methods sorts-out our arguments to the receive struct
 	msg := receive.SortArg(filename, argsPassed)
 	if msg != "" {
-		fmt.Println(msg)
-		return
+		return "", fmt.Errorf(msg)
 	}
 	// Checks if the color flag has been passed
 	if color != "" {
@@ -27,4 +26,5 @@ func GenerateASCII(color, text, filename string) {
 		receive.ColorCode = ""
 		receive.Art()
 	}
+	return receive.Art(), nil
 }

@@ -25,8 +25,9 @@ func Slice(word string) []string {
 	re3 := regexp.MustCompile(`.\\b|DEL.`)
 	word = re3.ReplaceAllString(word, "")
 
-	// Handle new line, both \n and \\n
+	// Handle new line, both \n and \\ns
 	re4 := regexp.MustCompile(`\\n`)
+	word = strings.ReplaceAll(word, "\r", "\n")
 	word = re4.ReplaceAllLiteralString(word, "\n")
 	wordArr := strings.Split(word, "\n")
 
